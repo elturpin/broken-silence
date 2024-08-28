@@ -23,8 +23,10 @@ const playSound = () => {
     audioElement.play();
 };
 
+const FREQUENCY = 5000;
+
 const armeSoundToPlay = () => {
-    setTimeout(playSound, 1000);
+    setTimeout(playSound, Math.random() * FREQUENCY);
 };
 
 playButton.addEventListener("click", armeSoundToPlay);
