@@ -14,20 +14,19 @@ fileInput.addEventListener("input", () => {
         audioElement.src = URL.createObjectURL(fileInput.files[0]);
         playButton.disabled = false;
     }
-})
+});
 
 const playSound = () => {
     if (audioContext.state === "suspended") {
         audioContext.resume();
     }
     audioElement.play();
-}
+};
 
 const armeSoundToPlay = () => {
     setTimeout(playSound, 1000);
 };
 
-playButton.addEventListener(
-    "click",
-    armeSoundToPlay
-);
+playButton.addEventListener("click", armeSoundToPlay);
+
+audioElement.addEventListener("ended", armeSoundToPlay);
