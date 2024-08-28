@@ -16,13 +16,18 @@ fileInput.addEventListener("input", () => {
     }
 })
 
+const playSound = () => {
+    if (audioContext.state === "suspended") {
+        audioContext.resume();
+    }
+    audioElement.play();
+}
+
+const armeSoundToPlay = () => {
+    setTimeout(playSound, 1000);
+};
+
 playButton.addEventListener(
     "click",
-    () => {
-        // Check if context is in suspended state (autoplay policy)
-        if (audioContext.state === "suspended") {
-            audioContext.resume();
-        }
-        audioElement.play();
-    }
+    armeSoundToPlay
 );
